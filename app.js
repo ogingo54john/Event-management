@@ -28,7 +28,7 @@ const deleteUserRoute = require('./routes/deleteUserRoute')
  app.use('/api/item',addItemRoute)
  app.use('/api/item',deleteItemRoute)
  app.use('/api/user',userRoute)
- app.use('/home',Home)
+ app.use('/',Home)
  app.use('api/page',newPage)
  // --------|| -------
  app.use('/api/user',addUserRoute)
