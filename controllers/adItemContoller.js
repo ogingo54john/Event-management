@@ -9,7 +9,7 @@ const addItems = function(req,res){
    // items.push(item);
    if(itemName===''){
        console.log("kindly enter something")
-       res.redirect("/")
+       res.redirect("/api/item")
    }else{
    const item4 = new Item({name:itemName})
 

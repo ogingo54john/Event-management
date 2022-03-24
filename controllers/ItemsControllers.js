@@ -2,18 +2,20 @@ const router = require('../routes/itemsRoute')
 const Item = require('../models/items')
 const List = require('../models/list')
 const date = require('../models/date')
+const newList = require('../models/items')
 
-const Item1 = new Item({name:"buy food"})
+const Item1 = new Item({name:"Add your items here"})
 
-const Item2 = new Item ({name:"cook food"})
+const Item2 = new Item ({name:"checked to delete"})
 
-const Item3 = new Item({name:"eat food"})
+const Item3 = new Item({name:"click + to add"})
 
 const defaulItems = [Item1,Item2,Item3]
 
 const getItemsAll = function(req,res){
     let day = date();
-    
+    //let day ="Today";
+
      //finding items
     // res.render("list", {kindOfDay:day,newItemList:items});
 
@@ -38,11 +40,26 @@ const getItemsAll = function(req,res){
 
 //const deleteItems = 
 
-const addNewList = (req,res)=>{
-    res.send('lists params route');
-     const newParams = res.params.listParams;
+const newListItem = (req,res)=>{
+    //res.send('lists params route');
+     const newParams = req.params.id;
      console.log(newParams)
-    list = new List({name:res})
+
+    newList.findOne({name:newParams},(err,docs)=>{
+        if(!docs){
+            const newListItem = new newList({
+                name:newParams,
+                items:defaulItems
+            })
+            newListItem.save();
+            res.redirect("/api/item/"+newParams)
+        }else{
+            //console.log("list exist")
+            res.render("list",{kindOfDay:docs.name,newItemList:docs.items})
+        }
+    })
+
+    
 
 }
 
@@ -51,4 +68,4 @@ const addNewList = (req,res)=>{
  exports.getItemsAll = getItemsAll;
  //exports.addItems = addItems;
  //exports.deleteItems = deleteItems;
- exports.addNewList =addNewList;
+ exports.newListItem =newListItem;

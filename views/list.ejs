@@ -18,13 +18,13 @@
 					<div class="navbar-brand">REMINDER</div>
 					<ul class="nav">
 						<li class="nav-item">
-							<a class="nav-link" href="/home">HOME</a>
+							<a class="nav-link" href="/">HOME</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">PORTFOLIO</a>
 						</li>
                         <li class="nav-item">
-							<a class="nav-link" href="/api/user">Users</a>
+							<a class="nav-link" href="/api/user">SIGN UP</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="/api/item">ADD ITEM</a>
@@ -53,7 +53,7 @@
      
         <form action="/api/item/add" class="item" method="post">
             <input type="text" name="newItem" placeholder="New Item" autocomplete="off">
-            <button type="submit" name="button">+</button>
+            <button type="submit" name="newList" value="<%= kindOfDay %> ">+</button>
         </form>
     </div>
    

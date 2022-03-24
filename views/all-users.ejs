@@ -1,30 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/sign-up.css">
-    <title>SignUp</title>
-</head>
-<body>
-    <div class="container">
-        <div class="main">
-            <div class="header">
-                <h2>Sign Up</h2>
+<%- include("partials/header") %>
+                <h2>All Users Only viewed by Admins</h2>
+                <h5>list of all sign-up users</h5>
             </div>
-            <div class="main-item">
-               
-                <form action="/" method="post">
-                    <input type="text" placeholder="Name" name="name">
-                    <input type="Email" placeholder="Email" name="name">
-                    <input type="password" placeholder="password" name="password">
-                    <button type="submit">register</button>
-                </form>
-           
+                <div class="main-item">
                 
+                    <%  newItemList.forEach((user)=>{ %> 
+                <div class="user-items">
+                    <form class="form-control" action="/api/user/<%= user.id %> " method ="post">
+                 <li><%= user.name %> </li> 
+              <button type="submit" class="btn btn-danger">delete</button>
+                </form
+                <button class="btn btn-primary"><details></details></button>
             </div>
-        </div>
-    </div>
-</body>
-</html>
+                <% }) %>
+            
+                <%- include("partials/footer") %>

@@ -19,6 +19,8 @@
     "express": "^4.17.2",
     "express-ejs-layouts": "^2.5.1",
     "mongoose": "^6.2.4",
+    "mongoose-encryption": "^2.1.2",
+    "mongoose-unique-validator": "^3.0.0",
     "path": "^0.12.7"
   }
 }

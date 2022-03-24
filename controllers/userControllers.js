@@ -14,7 +14,7 @@ const user2 = new User({
     password:"12345678"
 })
 
-const getAllUsers = function(req,res){
+const addUsers = function(req,res){
 
     let day =date();
 
@@ -29,10 +29,11 @@ const getAllUsers = function(req,res){
                         console.log('db updated succesfully');
                     }
                         })
-                        res.redirect('/')
+                        res.redirect('/signup')
 
-            }else{
-                res.render("item",{kindOfDay:day,newItemList:docs})
+            }
+            else{
+                res.render("user-signup",{kindOfDay:day,newItemList:docs})
             }
          }else{
             console.log(err)
@@ -46,6 +47,18 @@ const getAllUsers = function(req,res){
    // console.log('user routes started succefully and database updated');
 }
 
+const getAllUsers = function(req,res){
+    User.find({},(err,docs)=>{
+        if(!err){
+            //console.log(docs)
+            res.render("all-users",{newItemList:docs})
+        }else{
+            console.log(err.message)
+        }
+    })
+}
 
 
+
+exports.addUsers = addUsers;
 exports.getAllUsers = getAllUsers;

@@ -7,7 +7,7 @@ const deleteUser =  function(req,res){
     console.log(rmUser)
         if(mongoose.isValidObjectId(rmUser)){
             User.findByIdAndRemove(rmUser,(err)=>{
-                res.redirect('/api/user')
+                res.redirect('/api/user/all')
                 console.log('user successfully removed by admin')
             })
     }else{
